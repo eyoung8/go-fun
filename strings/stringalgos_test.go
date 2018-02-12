@@ -79,7 +79,11 @@ func TestOneWay(t *testing.T) {
 		str2     string
 		expected bool
 	}{
+		{"toolong", "too", false},
 		{"pale", "ale", true},
+		{"ale", "pale", true},
+		{"pae", "pale", true},
+		{"ple", "pale", true},
 		{"pale", "pale", true},
 		{"pale", "ple", true},
 		{"pales", "pale", true},

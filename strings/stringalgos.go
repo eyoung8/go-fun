@@ -122,10 +122,7 @@ func abs(n int) int {
 
 // bale --> baale
 func addCase(str1 string, str2 string, i int) bool {
-	if len(str1)-1 == i {
-		return false
-	}
-	addStr := str1[:i+1] + string(str2[i]) + str1[i+1:]
+	addStr := str1[:i] + string(str2[i]) + str1[i:]
 	return addStr == str2
 }
 
