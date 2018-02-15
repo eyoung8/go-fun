@@ -165,3 +165,23 @@ func (l *LinkedList) RemoveBack() (interface{}, error) {
 	}
 	return nil, emptyListErr
 }
+
+func (l *LinkedList) deleteNode(n *node) error {
+	if n == nil || l == nil {
+		return errors.New("Nil pointer")
+	}
+	if n.next != nil {
+		n.next.prev = n.prev
+	}
+	if n.prev != nil {
+		n.prev.next = n.next
+	}
+	if l.head == n {
+		l.head = n.next
+	}
+	if l.tail == n {
+		l.tail = n.prev
+	}
+	l.size--
+	return nil
+}
