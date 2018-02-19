@@ -89,7 +89,11 @@ func (l *LinkedList) Pop() interface{} {
 	}
 	val := l.tail.val
 	newTail := l.tail.prev
-	newTail.next = nil
+	if newTail == nil {
+		l.head = nil
+	} else {
+		newTail.next = nil
+	}
 	l.tail = newTail
 	l.size--
 	return val
