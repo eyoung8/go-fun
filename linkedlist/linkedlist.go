@@ -163,8 +163,10 @@ func (l *LinkedList) RemoveBack() (interface{}, error) {
 			l.tail.prev.next = nil
 		}
 		val := l.tail.val
-		l.tail = l.tail.prev
-		l.size--
+		err := l.deleteNode(l.tail)
+		if err != nil {
+			return nil, err
+		}
 		return val, nil
 	}
 	return nil, emptyListErr
